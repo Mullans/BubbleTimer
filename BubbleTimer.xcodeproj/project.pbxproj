@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D8ADABD19338B49004E7E37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADABC19338B49004E7E37 /* Foundation.framework */; };
+		3D8ADABF19338B49004E7E37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADABE19338B49004E7E37 /* CoreGraphics.framework */; };
+		3D8ADAC119338B49004E7E37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADAC019338B49004E7E37 /* UIKit.framework */; };
+		3D8ADAC719338B49004E7E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAC519338B49004E7E37 /* InfoPlist.strings */; };
+		3D8ADAC919338B49004E7E37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAC819338B49004E7E37 /* main.m */; };
+		3D8ADACD19338B49004E7E37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADACC19338B49004E7E37 /* AppDelegate.m */; };
+		3D8ADAD019338B49004E7E37 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADACE19338B49004E7E37 /* Main_iPhone.storyboard */; };
+		3D8ADAD319338B49004E7E37 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */; };
+		3D8ADAD619338B49004E7E37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAD519338B49004E7E37 /* ViewController.m */; };
+		3D8ADAD819338B49004E7E37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAD719338B49004E7E37 /* Images.xcassets */; };
+		3D8ADADF19338B49004E7E37 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADADE19338B49004E7E37 /* XCTest.framework */; };
+		3D8ADAE019338B49004E7E37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADABC19338B49004E7E37 /* Foundation.framework */; };
+		3D8ADAE119338B49004E7E37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADAC019338B49004E7E37 /* UIKit.framework */; };
+		3D8ADAE919338B49004E7E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAE719338B49004E7E37 /* InfoPlist.strings */; };
+		3D8ADAEB19338B49004E7E37 /* BubbleTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D8ADAE219338B49004E7E37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D8ADAB119338B49004E7E37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D8ADAB819338B49004E7E37;
+			remoteInfo = BubbleTimer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3D8ADAB919338B49004E7E37 /* BubbleTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D8ADABC19338B49004E7E37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3D8ADABE19338B49004E7E37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3D8ADAC019338B49004E7E37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3D8ADAC419338B49004E7E37 /* BubbleTimer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BubbleTimer-Info.plist"; sourceTree = "<group>"; };
+		3D8ADAC619338B49004E7E37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D8ADAC819338B49004E7E37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D8ADACA19338B49004E7E37 /* BubbleTimer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BubbleTimer-Prefix.pch"; sourceTree = "<group>"; };
+		3D8ADACB19338B49004E7E37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3D8ADACC19338B49004E7E37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3D8ADACF19338B49004E7E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		3D8ADAD219338B49004E7E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		3D8ADAD419338B49004E7E37 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3D8ADAD519338B49004E7E37 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3D8ADAD719338B49004E7E37 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3D8ADADD19338B49004E7E37 /* BubbleTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubbleTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D8ADADE19338B49004E7E37 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3D8ADAE619338B49004E7E37 /* BubbleTimerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BubbleTimerTests-Info.plist"; sourceTree = "<group>"; };
+		3D8ADAE819338B49004E7E37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubbleTimerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D8ADAB619338B49004E7E37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8ADABF19338B49004E7E37 /* CoreGraphics.framework in Frameworks */,
+				3D8ADAC119338B49004E7E37 /* UIKit.framework in Frameworks */,
+				3D8ADABD19338B49004E7E37 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8ADADA19338B49004E7E37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8ADADF19338B49004E7E37 /* XCTest.framework in Frameworks */,
+				3D8ADAE119338B49004E7E37 /* UIKit.framework in Frameworks */,
+				3D8ADAE019338B49004E7E37 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D8ADAB019338B49004E7E37 = {
+			isa = PBXGroup;
+			children = (
+				3D8ADAC219338B49004E7E37 /* BubbleTimer */,
+				3D8ADAE419338B49004E7E37 /* BubbleTimerTests */,
+				3D8ADABB19338B49004E7E37 /* Frameworks */,
+				3D8ADABA19338B49004E7E37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D8ADABA19338B49004E7E37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ADAB919338B49004E7E37 /* BubbleTimer.app */,
+				3D8ADADD19338B49004E7E37 /* BubbleTimerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D8ADABB19338B49004E7E37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ADABC19338B49004E7E37 /* Foundation.framework */,
+				3D8ADABE19338B49004E7E37 /* CoreGraphics.framework */,
+				3D8ADAC019338B49004E7E37 /* UIKit.framework */,
+				3D8ADADE19338B49004E7E37 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D8ADAC219338B49004E7E37 /* BubbleTimer */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ADACB19338B49004E7E37 /* AppDelegate.h */,
+				3D8ADACC19338B49004E7E37 /* AppDelegate.m */,
+				3D8ADACE19338B49004E7E37 /* Main_iPhone.storyboard */,
+				3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */,
+				3D8ADAD419338B49004E7E37 /* ViewController.h */,
+				3D8ADAD519338B49004E7E37 /* ViewController.m */,
+				3D8ADAD719338B49004E7E37 /* Images.xcassets */,
+				3D8ADAC319338B49004E7E37 /* Supporting Files */,
+			);
+			path = BubbleTimer;
+			sourceTree = "<group>";
+		};
+		3D8ADAC319338B49004E7E37 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ADAC419338B49004E7E37 /* BubbleTimer-Info.plist */,
+				3D8ADAC519338B49004E7E37 /* InfoPlist.strings */,
+				3D8ADAC819338B49004E7E37 /* main.m */,
+				3D8ADACA19338B49004E7E37 /* BubbleTimer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D8ADAE419338B49004E7E37 /* BubbleTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */,
+				3D8ADAE519338B49004E7E37 /* Supporting Files */,
+			);
+			path = BubbleTimerTests;
+			sourceTree = "<group>";
+		};
+		3D8ADAE519338B49004E7E37 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ADAE619338B49004E7E37 /* BubbleTimerTests-Info.plist */,
+				3D8ADAE719338B49004E7E37 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D8ADAB819338B49004E7E37 /* BubbleTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D8ADAEE19338B49004E7E37 /* Build configuration list for PBXNativeTarget "BubbleTimer" */;
+			buildPhases = (
+				3D8ADAB519338B49004E7E37 /* Sources */,
+				3D8ADAB619338B49004E7E37 /* Frameworks */,
+				3D8ADAB719338B49004E7E37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BubbleTimer;
+			productName = BubbleTimer;
+			productReference = 3D8ADAB919338B49004E7E37 /* BubbleTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D8ADADC19338B49004E7E37 /* BubbleTimerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D8ADAF119338B49004E7E37 /* Build configuration list for PBXNativeTarget "BubbleTimerTests" */;
+			buildPhases = (
+				3D8ADAD919338B49004E7E37 /* Sources */,
+				3D8ADADA19338B49004E7E37 /* Frameworks */,
+				3D8ADADB19338B49004E7E37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D8ADAE319338B49004E7E37 /* PBXTargetDependency */,
+			);
+			name = BubbleTimerTests;
+			productName = BubbleTimerTests;
+			productReference = 3D8ADADD19338B49004E7E37 /* BubbleTimerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D8ADAB119338B49004E7E37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = SilentLupin;
+				TargetAttributes = {
+					3D8ADADC19338B49004E7E37 = {
+						TestTargetID = 3D8ADAB819338B49004E7E37;
+					};
+				};
+			};
+			buildConfigurationList = 3D8ADAB419338B49004E7E37 /* Build configuration list for PBXProject "BubbleTimer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D8ADAB019338B49004E7E37;
+			productRefGroup = 3D8ADABA19338B49004E7E37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D8ADAB819338B49004E7E37 /* BubbleTimer */,
+				3D8ADADC19338B49004E7E37 /* BubbleTimerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D8ADAB719338B49004E7E37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8ADAD319338B49004E7E37 /* Main_iPad.storyboard in Resources */,
+				3D8ADAD819338B49004E7E37 /* Images.xcassets in Resources */,
+				3D8ADAD019338B49004E7E37 /* Main_iPhone.storyboard in Resources */,
+				3D8ADAC719338B49004E7E37 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8ADADB19338B49004E7E37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8ADAE919338B49004E7E37 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D8ADAB519338B49004E7E37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8ADAD619338B49004E7E37 /* ViewController.m in Sources */,
+				3D8ADACD19338B49004E7E37 /* AppDelegate.m in Sources */,
+				3D8ADAC919338B49004E7E37 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8ADAD919338B49004E7E37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D8ADAEB19338B49004E7E37 /* BubbleTimerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D8ADAE319338B49004E7E37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D8ADAB819338B49004E7E37 /* BubbleTimer */;
+			targetProxy = 3D8ADAE219338B49004E7E37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D8ADAC519338B49004E7E37 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8ADAC619338B49004E7E37 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3D8ADACE19338B49004E7E37 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8ADACF19338B49004E7E37 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8ADAD219338B49004E7E37 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		3D8ADAE719338B49004E7E37 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D8ADAE819338B49004E7E37 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D8ADAEC19338B49004E7E37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D8ADAED19338B49004E7E37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D8ADAEF19338B49004E7E37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
+				INFOPLIST_FILE = "BubbleTimer/BubbleTimer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3D8ADAF019338B49004E7E37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
+				INFOPLIST_FILE = "BubbleTimer/BubbleTimer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3D8ADAF219338B49004E7E37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BubbleTimer.app/BubbleTimer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BubbleTimerTests/BubbleTimerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3D8ADAF319338B49004E7E37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BubbleTimer.app/BubbleTimer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
+				INFOPLIST_FILE = "BubbleTimerTests/BubbleTimerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D8ADAB419338B49004E7E37 /* Build configuration list for PBXProject "BubbleTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8ADAEC19338B49004E7E37 /* Debug */,
+				3D8ADAED19338B49004E7E37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D8ADAEE19338B49004E7E37 /* Build configuration list for PBXNativeTarget "BubbleTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8ADAEF19338B49004E7E37 /* Debug */,
+				3D8ADAF019338B49004E7E37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3D8ADAF119338B49004E7E37 /* Build configuration list for PBXNativeTarget "BubbleTimerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8ADAF219338B49004E7E37 /* Debug */,
+				3D8ADAF319338B49004E7E37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D8ADAB119338B49004E7E37 /* Project object */;
+}
