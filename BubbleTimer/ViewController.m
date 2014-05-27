@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#define MINRADIUS 10
+#define MAXRADIUS 30
 
 @interface ViewController ()
 
@@ -43,8 +45,30 @@
 
 -(void)oneTapDetected:(UITapGestureRecognizer *)recognizer{
     NSLog(@"one tap detected");
-    tapPositionOneFingerTap = [oneFingerTap locationInView:self.view];
-    NSLog(@"%f, %f",tapPositionOneFingerTap.x,tapPositionOneFingerTap.y);
+    tapPoint = [oneFingerTap locationInView:self.view];
+    NSLog(@"%f, %f",tapPoint.x,tapPoint.y);
+    
+    // Create a new iOSCircle Object
+    CGRect circleFrame = CGRectMake(tapPoint.x-10,tapPoint.y-10,tapPoint.y+10,tapPoint.y+10);
+    iOSCircle *newCircle = [[iOSCircle alloc]initWithFrame:circleFrame];
+    // Set the Center of the Circle
+    newCircle.circleCenter = tapPoint;
+    // Set a random Circle Radius
+    newCircle.circleRadius = 20;
+    
+    // Add the Circle Object to the Array
+    [totalBubbles addObject:newCircle];
+    
+    // update the view
+    [self.view addSubview:newCircle];
+    //[self.view setNeedsDisplay];
 }
+
+-(void)drawBubble
+{
+    return;
+}
+
+
 
 @end

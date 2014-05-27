@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D388F24193531AA00E54AF3 /* iOSCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D388F23193531AA00E54AF3 /* iOSCircle.m */; };
 		3D8ADABD19338B49004E7E37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADABC19338B49004E7E37 /* Foundation.framework */; };
 		3D8ADABF19338B49004E7E37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADABE19338B49004E7E37 /* CoreGraphics.framework */; };
 		3D8ADAC119338B49004E7E37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADAC019338B49004E7E37 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D388F22193531AA00E54AF3 /* iOSCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSCircle.h; sourceTree = "<group>"; };
+		3D388F23193531AA00E54AF3 /* iOSCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOSCircle.m; sourceTree = "<group>"; };
 		3D8ADAB919338B49004E7E37 /* BubbleTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D8ADABC19338B49004E7E37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3D8ADABE19338B49004E7E37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,8 @@
 				3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */,
 				3D8ADAD419338B49004E7E37 /* ViewController.h */,
 				3D8ADAD519338B49004E7E37 /* ViewController.m */,
+				3D388F22193531AA00E54AF3 /* iOSCircle.h */,
+				3D388F23193531AA00E54AF3 /* iOSCircle.m */,
 				3D8ADAD719338B49004E7E37 /* Images.xcassets */,
 				3D8ADAC319338B49004E7E37 /* Supporting Files */,
 			);
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D8ADAD619338B49004E7E37 /* ViewController.m in Sources */,
+				3D388F24193531AA00E54AF3 /* iOSCircle.m in Sources */,
 				3D8ADACD19338B49004E7E37 /* AppDelegate.m in Sources */,
 				3D8ADAC919338B49004E7E37 /* main.m in Sources */,
 			);
@@ -470,6 +476,7 @@
 				3D8ADAF019338B49004E7E37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D8ADAF119338B49004E7E37 /* Build configuration list for PBXNativeTarget "BubbleTimerTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +485,7 @@
 				3D8ADAF319338B49004E7E37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

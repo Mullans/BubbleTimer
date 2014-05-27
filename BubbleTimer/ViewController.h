@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "iOSCircle.h"
 
 @interface ViewController : UIViewController{
     UIImageView *imageView;
     UITapGestureRecognizer *oneFingerTap;
-    CGPoint tapPositionOneFingerTap;
+    CGPoint tapPoint;
+    NSMutableArray *totalBubbles;
 }
+
+-(void)drawBubble;
 
 @end
