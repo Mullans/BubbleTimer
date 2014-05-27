@@ -14,7 +14,6 @@
 		3D8ADAC719338B49004E7E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAC519338B49004E7E37 /* InfoPlist.strings */; };
 		3D8ADAC919338B49004E7E37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAC819338B49004E7E37 /* main.m */; };
 		3D8ADACD19338B49004E7E37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADACC19338B49004E7E37 /* AppDelegate.m */; };
-		3D8ADAD019338B49004E7E37 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADACE19338B49004E7E37 /* Main_iPhone.storyboard */; };
 		3D8ADAD319338B49004E7E37 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */; };
 		3D8ADAD619338B49004E7E37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAD519338B49004E7E37 /* ViewController.m */; };
 		3D8ADAD819338B49004E7E37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAD719338B49004E7E37 /* Images.xcassets */; };
@@ -48,7 +47,6 @@
 		3D8ADACA19338B49004E7E37 /* BubbleTimer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BubbleTimer-Prefix.pch"; sourceTree = "<group>"; };
 		3D8ADACB19338B49004E7E37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D8ADACC19338B49004E7E37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3D8ADACF19338B49004E7E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		3D8ADAD219338B49004E7E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		3D8ADAD419338B49004E7E37 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3D8ADAD519338B49004E7E37 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 			children = (
 				3D8ADACB19338B49004E7E37 /* AppDelegate.h */,
 				3D8ADACC19338B49004E7E37 /* AppDelegate.m */,
-				3D8ADACE19338B49004E7E37 /* Main_iPhone.storyboard */,
 				3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */,
 				3D8ADAD419338B49004E7E37 /* ViewController.h */,
 				3D8ADAD519338B49004E7E37 /* ViewController.m */,
@@ -207,6 +204,16 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = SilentLupin;
 				TargetAttributes = {
+					3D8ADAB819338B49004E7E37 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
 					3D8ADADC19338B49004E7E37 = {
 						TestTargetID = 3D8ADAB819338B49004E7E37;
 					};
@@ -238,7 +245,6 @@
 			files = (
 				3D8ADAD319338B49004E7E37 /* Main_iPad.storyboard in Resources */,
 				3D8ADAD819338B49004E7E37 /* Images.xcassets in Resources */,
-				3D8ADAD019338B49004E7E37 /* Main_iPhone.storyboard in Resources */,
 				3D8ADAC719338B49004E7E37 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,14 +296,6 @@
 				3D8ADAC619338B49004E7E37 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		3D8ADACE19338B49004E7E37 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D8ADACF19338B49004E7E37 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */ = {
@@ -400,6 +398,7 @@
 				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
 				INFOPLIST_FILE = "BubbleTimer/BubbleTimer-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -413,6 +412,7 @@
 				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
 				INFOPLIST_FILE = "BubbleTimer/BubbleTimer-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

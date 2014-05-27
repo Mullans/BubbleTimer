@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "iOSCircle.h"
+#define MINRADIUS 10
+#define MAXRADIUS 30
+#define BUBBLESIZE 60
 
 @interface ViewController : UIViewController{
     UIImageView *imageView;

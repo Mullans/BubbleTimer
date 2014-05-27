@@ -7,6 +7,7 @@
 //
 
 #import "iOSCircle.h"
+#import "ViewController.h"
 
 @implementation iOSCircle
 @synthesize circleCenter,circleRadius;
@@ -29,15 +30,15 @@
 
 - (void)drawCircle
 {
+    int circleStroke = 2.0;
     // Get the Graphics Context
     CGContextRef context = UIGraphicsGetCurrentContext();
     // Set the circle outerline-width
-    CGContextSetLineWidth(context, 1.0);
+    CGContextSetLineWidth(context, circleStroke);
     // Set the circle outerline-colour
-    [[UIColor redColor] set];
+    [[UIColor blueColor] set];
     
-    
-    CGContextAddArc(context, 10, 10, self.circleRadius, 0.0, M_PI * 2.0, YES);
+    CGContextAddArc(context, BUBBLESIZE/2, BUBBLESIZE/2, BUBBLESIZE/2-circleStroke, 0.0, M_PI * 2.0, YES);
     // Draw
     CGContextStrokePath(context);
         NSLog(@"%f, %f",self.circleCenter.x,self.circleCenter.y);
