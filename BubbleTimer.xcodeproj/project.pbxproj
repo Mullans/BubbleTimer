@@ -122,7 +122,6 @@
 				3D8ADAD519338B49004E7E37 /* ViewController.m */,
 				3D388F22193531AA00E54AF3 /* iOSCircle.h */,
 				3D388F23193531AA00E54AF3 /* iOSCircle.m */,
-				3D8ADAD719338B49004E7E37 /* Images.xcassets */,
 				3D8ADAC319338B49004E7E37 /* Supporting Files */,
 			);
 			path = BubbleTimer;
@@ -131,6 +130,7 @@
 		3D8ADAC319338B49004E7E37 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3D8ADAD719338B49004E7E37 /* Images.xcassets */,
 				3D8ADAC419338B49004E7E37 /* BubbleTimer-Info.plist */,
 				3D8ADAC519338B49004E7E37 /* InfoPlist.strings */,
 				3D8ADAC819338B49004E7E37 /* main.m */,

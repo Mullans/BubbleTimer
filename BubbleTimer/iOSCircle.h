@@ -10,11 +10,16 @@
 #import <UIKit/UIKit.h>
 
 
-@interface iOSCircle: UIView
+@interface iOSCircle: UIView{
+    UILabel* time;
+}
 @property (nonatomic) CGPoint circleCenter;
 @property (nonatomic) float circleRadius;
+@property (nonatomic) float secondsPassed;
+@property (nonatomic,retain) UILabel* time;
 
 - (void)drawCircle;
+-(void)updateTime: (NSString*)newTime;
 
 
 @end

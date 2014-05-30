@@ -47,20 +47,20 @@
     tapPoint = [oneFingerTap locationInView:self.view];
 //    NSLog(@"%f, %f",tapPoint.x,tapPoint.y);
     
+    NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
+    NSLog(@"%li",(long)thisBubbleSize);
     // Create a new iOSCircle Object
-    CGRect circleFrame = CGRectMake(tapPoint.x-BUBBLESIZE/2,tapPoint.y-BUBBLESIZE/2,BUBBLESIZE,BUBBLESIZE);
+    CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
     iOSCircle *newCircle = [[iOSCircle alloc]initWithFrame:circleFrame];
-    // Set the Center of the Circle
     newCircle.circleCenter = tapPoint;
-    // Set a random Circle Radius
-    newCircle.circleRadius = BUBBLESIZE;
-    
+    // Set a random Circle Radius in the future
+    newCircle.circleRadius = thisBubbleSize;
+    newCircle.opaque = false;
     // Add the Circle Object to the Array
     [totalBubbles addObject:newCircle];
-    
+    [newCircle updateTime:@"00:00:01"];
     // update the view
     [self.view addSubview:newCircle];
-    //[self.view setNeedsDisplay];
 }
 
 -(void)drawBubble
