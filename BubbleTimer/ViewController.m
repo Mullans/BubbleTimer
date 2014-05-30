@@ -19,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
     //sets background image
     NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
     NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
@@ -34,6 +34,14 @@
     oneFingerTap.numberOfTapsRequired=1;
     oneFingerTap.numberOfTouchesRequired=1;
     [self.view addGestureRecognizer:oneFingerTap];
+    
+    //set a gesture recognizer for double taps in the main view
+    doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapDetected:)];
+    doubleTap.numberOfTapsRequired=2;
+    doubleTap.numberOfTouchesRequired=1;
+    [self.view addGestureRecognizer:doubleTap];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +55,13 @@
     tapPoint = [oneFingerTap locationInView:self.view];
 //    NSLog(@"%f, %f",tapPoint.x,tapPoint.y);
     
+    for (iOSCircle *circle in totalBubbles){
+        if(CGRectContainsPoint(circle.frame, tapPoint)){
+            [circle tapBubble];
+            return;
+        }
+    }
+    
     NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
     NSLog(@"%li",(long)thisBubbleSize);
     // Create a new iOSCircle Object
@@ -59,13 +74,24 @@
     // Add the Circle Object to the Array
     [totalBubbles addObject:newCircle];
     // update the view
+    newCircle.userInteractionEnabled = YES;
     [self.view addSubview:newCircle];
+}
+-(void)doubleTapDetected:(UIGestureRecognizer*)recognizer{
+    tapPoint = [doubleTap locationInView:self.view];
+    for(iOSCircle *circle in totalBubbles){
+        if(CGRectContainsPoint(circle.frame, tapPoint)){
+            [totalBubbles removeObject:circle];
+            [circle removeFromSuperview];
+        }
+    }
 }
 
 -(void)drawBubble
 {
     return;
 }
+
 -(void)updateTimers:(NSTimer *)theTimer{
     for(iOSCircle* circle in totalBubbles){
         [circle updateCounter];

@@ -15,6 +15,7 @@
 @interface ViewController : UIViewController{
     UIImageView *imageView;
     UITapGestureRecognizer *oneFingerTap;
+    UITapGestureRecognizer *doubleTap;
     CGPoint tapPoint;
     NSMutableArray *totalBubbles;
     NSTimer* timer;

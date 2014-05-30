@@ -11,11 +11,11 @@
 
 @implementation iOSCircle
 @synthesize circleCenter,circleRadius,secondsPassed;
-@synthesize innerTimer, context;
+@synthesize context,inactive;
 
 - (id)initWithFrame:(CGRect)frame Radius:(int)radius
 {
-    innerTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+    inactive = false;
     _time.text = @"00:00:00";
     sentinel = 0;
     self = [super initWithFrame:frame];
@@ -49,15 +49,18 @@
     CGContextSetLineWidth(context, circleStroke);
     // Set the circle outerline-colour
     [[UIColor blueColor] set];
-    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithWhite:0.0 alpha:0.0])];
-    CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2-circleStroke, 0.0, M_PI * 2.0, YES);
+//    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithWhite:255 alpha:.4])];
+    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithRed:0 green:1 blue:0 alpha:.5])];
+    CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2, 0.0, M_PI * 2.0, YES);
     // Draw
+    [self setNeedsDisplay];
     CGContextStrokePath(context);
 //    NSLog(@"%f, %f",self.circleCenter.x,self.circleCenter.y);
-    self.layer.cornerRadius = 0;
+    self.layer.cornerRadius = circleRadius/2-1;
+    self.layer.masksToBounds = YES;
     self.center = circleCenter;
     _time = [[UILabel alloc] initWithFrame:CGRectMake(circleRadius/2-27, circleRadius/2-10,120,20)];
-    _time.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+    _time.text = [NSString stringWithFormat:@"%02d:%02d.%02d", minutes, seconds, milliseconds];
     [_time setTextColor:[UIColor blueColor]];
 //    [_time setBackgroundColor:[UIColor clearColor]];
     [_time setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
@@ -67,26 +70,21 @@
     [self bringSubviewToFront:_time];
 }
 
-- (void)updateCounter:(NSTimer *)theTimer {
-    NSLog(@"Tock");
-    totalSeconds++;
-    seconds = totalSeconds%60;
-    minutes = (totalSeconds/60)%60;
-    hours = (totalSeconds/3600);
-    _time.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
-    [self setNeedsDisplay];
-    NSLog(@"Timer: %@",[NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds]);
-}
-
 - (void)updateCounter{
-    totalSeconds++;
-    seconds = totalSeconds%60;
-    minutes = (totalSeconds/60)%60;
-    hours = (totalSeconds/3600);
-    _time.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
-    [self setNeedsDisplay];
-    NSLog(@"noTimer: %@",[NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds]);
+    if(!inactive){
+        totalMilliseconds++;
+        milliseconds = totalMilliseconds%100;
+        seconds = (totalMilliseconds/100)%60;
+        minutes = (totalMilliseconds/6000);
+//        _time.text = [NSString stringWithFormat:@"%02d:%02d.%02d", hours, minutes, seconds];
+        [self setNeedsDisplay];
+    }
 }
 
+-(void)tapBubble{
+    NSLog(@"BubbleTapped");
+    inactive = !inactive;
+    self.backgroundColor = ([UIColor colorWithRed:1 green:0 blue:0 alpha:.5]);
+}
 
 @end
