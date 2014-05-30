@@ -26,6 +26,7 @@
     UIImage *img = [UIImage imageWithData:imgData];
     imageView = [[UIImageView alloc] initWithImage:img];
     totalBubbles = [[NSMutableArray alloc] initWithCapacity:1];
+    toRemove = [[NSMutableArray alloc] initWithCapacity:1];
     [self.view addSubview:imageView ];
     [self.view sendSubviewToBack:imageView ];
     
@@ -81,18 +82,19 @@
     tapPoint = [doubleTap locationInView:self.view];
     for(iOSCircle *circle in totalBubbles){
         if(CGRectContainsPoint(circle.frame, tapPoint)){
-            [totalBubbles removeObject:circle];
             [circle removeFromSuperview];
+            [toRemove addObject:circle];
         }
     }
 }
 
--(void)drawBubble
-{
-    return;
-}
 
 -(void)updateTimers:(NSTimer *)theTimer{
+    if([toRemove count]!=0){
+        for(iOSCircle* circle in toRemove){
+            [totalBubbles removeObject:circle];
+        }
+    }
     for(iOSCircle* circle in totalBubbles){
         [circle updateCounter];
     }

@@ -18,11 +18,11 @@
     UITapGestureRecognizer *doubleTap;
     CGPoint tapPoint;
     NSMutableArray *totalBubbles;
+    NSMutableArray *toRemove;
     NSTimer* timer;
 }
 @property (retain,nonatomic) NSTimer *timer;
 
--(void)drawBubble;
 -(void)updateTimers: (NSTimer*)theTimer;
 
 @end
