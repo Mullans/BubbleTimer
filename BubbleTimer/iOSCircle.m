@@ -11,12 +11,13 @@
 
 @implementation iOSCircle
 @synthesize circleCenter,circleRadius,secondsPassed;
-@synthesize innerTimer;
+@synthesize innerTimer, context;
 
 - (id)initWithFrame:(CGRect)frame Radius:(int)radius
 {
     innerTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
     _time.text = @"00:00:00";
+    sentinel = 0;
     self = [super initWithFrame:frame];
     self.opaque = true;
     self.backgroundColor = ([UIColor colorWithWhite:0.0 alpha:0.0]);
@@ -38,7 +39,12 @@
 {
     int circleStroke = 2.0;
     // Get the Graphics Context
-    CGContextRef context = UIGraphicsGetCurrentContext();
+    if(sentinel==0){
+        sentinel = 1;
+    }else{
+        [_time removeFromSuperview];
+    }
+    context = UIGraphicsGetCurrentContext();
     // Set the circle outerline-width
     CGContextSetLineWidth(context, circleStroke);
     // Set the circle outerline-colour
@@ -50,7 +56,6 @@
 //    NSLog(@"%f, %f",self.circleCenter.x,self.circleCenter.y);
     self.layer.cornerRadius = 0;
     self.center = circleCenter;
-    
     _time = [[UILabel alloc] initWithFrame:CGRectMake(circleRadius/2-27, circleRadius/2-10,120,20)];
     _time.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
     [_time setTextColor:[UIColor blueColor]];

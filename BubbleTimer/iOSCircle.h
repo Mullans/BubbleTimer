@@ -18,7 +18,10 @@
     int hours;
     int totalSeconds;
     NSTimer* innerTimer;
+    CGContextRef context;
+    int sentinel;
 }
+@property (nonatomic) CGContextRef context;
 @property (nonatomic) CGPoint circleCenter;
 @property (nonatomic) float circleRadius;
 @property (nonatomic) float secondsPassed;
