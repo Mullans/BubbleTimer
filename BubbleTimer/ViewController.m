@@ -14,18 +14,18 @@
 @end
 
 @implementation ViewController
+@synthesize timer;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
     //sets background image
     NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
     NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
     UIImage *img = [UIImage imageWithData:imgData];
-    
     imageView = [[UIImageView alloc] initWithImage:img];
-    
+    totalBubbles = [[NSMutableArray alloc] initWithCapacity:1];
     [self.view addSubview:imageView ];
     [self.view sendSubviewToBack:imageView ];
     
@@ -58,7 +58,6 @@
     newCircle.opaque = false;
     // Add the Circle Object to the Array
     [totalBubbles addObject:newCircle];
-    [newCircle updateTime:@"00:00:01"];
     // update the view
     [self.view addSubview:newCircle];
 }
@@ -66,6 +65,11 @@
 -(void)drawBubble
 {
     return;
+}
+-(void)updateTimers:(NSTimer *)theTimer{
+    for(iOSCircle* circle in totalBubbles){
+        [circle updateCounter];
+    }
 }
 
 

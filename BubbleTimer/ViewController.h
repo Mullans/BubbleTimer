@@ -17,8 +17,11 @@
     UITapGestureRecognizer *oneFingerTap;
     CGPoint tapPoint;
     NSMutableArray *totalBubbles;
+    NSTimer* timer;
 }
+@property (retain,nonatomic) NSTimer *timer;
 
 -(void)drawBubble;
+-(void)updateTimers: (NSTimer*)theTimer;
 
 @end

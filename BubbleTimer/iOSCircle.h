@@ -12,14 +12,20 @@
 
 @interface iOSCircle: UIView{
     UILabel* time;
+    //possible have a transition to hours?
+    int minutes;
+    int seconds;
+    int hours;
+    int totalSeconds;
+    NSTimer* innerTimer;
 }
 @property (nonatomic) CGPoint circleCenter;
 @property (nonatomic) float circleRadius;
 @property (nonatomic) float secondsPassed;
 @property (nonatomic,retain) UILabel* time;
+@property (nonatomic,retain) NSTimer* innerTimer;
 
 - (void)drawCircle;
--(void)updateTime: (NSString*)newTime;
-
-
+-(void)updateCounter:(NSTimer*) theTimer;
+-(void)updateCounter;
 @end
