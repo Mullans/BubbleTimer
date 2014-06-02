@@ -13,8 +13,12 @@
 @synthesize circleCenter,circleRadius,secondsPassed;
 @synthesize context,inactive;
 
-- (id)initWithFrame:(CGRect)frame Radius:(int)radius
+- (id)initStopwatch:(CGRect)frame
 {
+    myRed = 0;
+    myGreen = 1;
+    myAlpha = .4;
+    timeLeft = 0;
     inactive = false;
     _time.text = @"00:00:00";
     sentinel = 0;
@@ -26,6 +30,25 @@
  
     }
 
+    return self;
+}
+-(id)initTimer:(CGRect)frame Time:(int)remaining{
+    myAlpha = .4;
+    myRed = 0;
+    myGreen = 1;
+    totalMilliseconds = remaining*100;
+    startingTime = remaining*100;
+    timeLeft = 1;
+    inactive = false;
+    _time.text = @"00:00:00";
+    sentinel = 0;
+    self = [super initWithFrame:frame];
+    self.opaque = true;
+    self.backgroundColor = ([UIColor colorWithWhite:0.0 alpha:0.0]);
+    if (self) {
+        // Initialization code
+        
+    }
     return self;
 }
 
@@ -48,15 +71,15 @@
     // Set the circle outerline-width
     CGContextSetLineWidth(context, circleStroke);
     // Set the circle outerline-colour
-    [[UIColor blueColor] set];
+    [[[UIColor alloc]initWithRed:0 green:0 blue:1 alpha:.5] set];
 //    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithWhite:255 alpha:.4])];
-    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithRed:0 green:1 blue:0 alpha:.5])];
-    CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2, 0.0, M_PI * 2.0, YES);
+    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithRed:myRed green:myGreen blue:0 alpha:myAlpha])];
+    CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2-1, 0.0, M_PI * 2.0, YES);
     // Draw
     [self setNeedsDisplay];
     CGContextStrokePath(context);
 //    NSLog(@"%f, %f",self.circleCenter.x,self.circleCenter.y);
-    self.layer.cornerRadius = circleRadius/2-1;
+    self.layer.cornerRadius = circleRadius/2;
     self.layer.masksToBounds = YES;
     self.center = circleCenter;
     _time = [[UILabel alloc] initWithFrame:CGRectMake(circleRadius/2-27, circleRadius/2-10,120,20)];
@@ -72,7 +95,22 @@
 
 - (void)updateCounter{
     if(!inactive){
-        totalMilliseconds++;
+        if(timeLeft==1){
+            totalMilliseconds--;
+            if(totalMilliseconds==0){
+                inactive= !inactive;
+                timeLeft = 0;
+                myGreen = 1;
+                myRed = 0;
+                startingTime = 0;
+            }else{
+                float percentDone = ((float)startingTime-(float)totalMilliseconds)/(float)startingTime;
+                myGreen = 1-percentDone;
+                myRed = percentDone;
+            }
+        }else{
+            totalMilliseconds++;
+        }
         milliseconds = totalMilliseconds%100;
         seconds = (totalMilliseconds/100)%60;
         minutes = (totalMilliseconds/6000);
@@ -84,7 +122,7 @@
 -(void)tapBubble{
     NSLog(@"BubbleTapped");
     inactive = !inactive;
-    self.backgroundColor = ([UIColor colorWithRed:1 green:0 blue:0 alpha:.5]);
+    self.backgroundColor = ([UIColor colorWithRed:1 green:0 blue:0 alpha:myAlpha]);
 }
 
 @end

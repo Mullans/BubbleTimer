@@ -21,10 +21,14 @@
     [super viewDidLoad];
     timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
     //sets background image
-    NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
-    NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
-    UIImage *img = [UIImage imageWithData:imgData];
-    imageView = [[UIImageView alloc] initWithImage:img];
+//    NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
+//    NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
+//    UIImage *img = [UIImage imageWithData:imgData];
+//    imageView = [[UIImageView alloc] initWithImage:img];
+    
+    UIImage *testImage = [UIImage imageNamed:@"sky.png"];
+    imageView = [[UIImageView alloc] initWithImage:testImage];
+
     totalBubbles = [[NSMutableArray alloc] initWithCapacity:1];
     toRemove = [[NSMutableArray alloc] initWithCapacity:1];
     [self.view addSubview:imageView ];
@@ -42,6 +46,10 @@
     doubleTap.numberOfTouchesRequired=1;
     [self.view addGestureRecognizer:doubleTap];
     
+    longTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapDetected:)];
+    longTap.minimumPressDuration = .5;
+    longTap.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:longTap];
 
 }
 
@@ -67,7 +75,7 @@
     NSLog(@"%li",(long)thisBubbleSize);
     // Create a new iOSCircle Object
     CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
-    iOSCircle *newCircle = [[iOSCircle alloc]initWithFrame:circleFrame];
+    iOSCircle *newCircle = [[iOSCircle alloc]initStopwatch:circleFrame];
     newCircle.circleCenter = tapPoint;
     // Set a random Circle Radius in the future
     newCircle.circleRadius = thisBubbleSize;
@@ -87,7 +95,41 @@
         }
     }
 }
-
+-(void)longTapDetected:(UILongPressGestureRecognizer*)recognizer{
+    NSLog(@"longTouch");
+    tapPoint = [longTap locationInView:self.view];
+    if(recognizer.state == UIGestureRecognizerStateEnded){
+        for (iOSCircle *circle in totalBubbles){
+            if(CGRectContainsPoint(circle.frame, tapPoint)){
+                return;
+            }
+        }
+        NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
+        NSLog(@"%li",(long)thisBubbleSize);
+        // Create a new iOSCircle Object
+        CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
+        
+        //use UIPopover to get desired time
+        
+        iOSCircle *newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:30];
+        newCircle.circleCenter = tapPoint;
+        // Set a random Circle Radius in the future
+        newCircle.circleRadius = thisBubbleSize;
+        newCircle.opaque = false;
+        // Add the Circle Object to the Array
+        [totalBubbles addObject:newCircle];
+        // update the view
+        newCircle.userInteractionEnabled = YES;
+        [self.view addSubview:newCircle];
+    }else if(recognizer.state ==UIGestureRecognizerStateBegan){
+        for (iOSCircle *circle in totalBubbles){
+            if(CGRectContainsPoint(circle.frame, tapPoint)){
+                [circle tapBubble];
+                return;
+            }
+        }
+    }
+}
 
 -(void)updateTimers:(NSTimer *)theTimer{
     if([toRemove count]!=0){
@@ -99,7 +141,6 @@
         [circle updateCounter];
     }
 }
-
 
 
 @end

@@ -22,6 +22,7 @@
 		3D8ADAE119338B49004E7E37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADAC019338B49004E7E37 /* UIKit.framework */; };
 		3D8ADAE919338B49004E7E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAE719338B49004E7E37 /* InfoPlist.strings */; };
 		3D8ADAEB19338B49004E7E37 /* BubbleTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */; };
+		3DE2EE18193C012F003DE06B /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE2EE17193C012F003DE06B /* background1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		3D8ADAE619338B49004E7E37 /* BubbleTimerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BubbleTimerTests-Info.plist"; sourceTree = "<group>"; };
 		3D8ADAE819338B49004E7E37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubbleTimerTests.m; sourceTree = "<group>"; };
+		3DE2EE17193C012F003DE06B /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				3D8ADAD719338B49004E7E37 /* Images.xcassets */,
+				3DE2EE17193C012F003DE06B /* background1.png */,
 				3D8ADAC419338B49004E7E37 /* BubbleTimer-Info.plist */,
 				3D8ADAC519338B49004E7E37 /* InfoPlist.strings */,
 				3D8ADAC819338B49004E7E37 /* main.m */,
@@ -246,6 +249,7 @@
 				3D8ADAD319338B49004E7E37 /* Main_iPad.storyboard in Resources */,
 				3D8ADAD819338B49004E7E37 /* Images.xcassets in Resources */,
 				3D8ADAC719338B49004E7E37 /* InfoPlist.strings in Resources */,
+				3DE2EE18193C012F003DE06B /* background1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

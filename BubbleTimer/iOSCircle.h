@@ -20,6 +20,9 @@
     CGContextRef context;
     int sentinel;
     bool inactive;
+    int timeLeft;
+    unsigned int startingTime;
+    float myRed,myGreen,myAlpha;
 }
 @property (nonatomic) CGContextRef context;
 @property (nonatomic) CGPoint circleCenter;
@@ -31,4 +34,6 @@
 - (void)drawCircle;
 -(void)updateCounter;
 -(void)tapBubble;
+-(id)initTimer:(CGRect)frame Time:(int)remaining;
+-(id)initStopwatch:(CGRect)frame;
 @end

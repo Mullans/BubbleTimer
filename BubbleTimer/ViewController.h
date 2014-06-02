@@ -16,12 +16,16 @@
     UIImageView *imageView;
     UITapGestureRecognizer *oneFingerTap;
     UITapGestureRecognizer *doubleTap;
+    UILongPressGestureRecognizer *longTap;
     CGPoint tapPoint;
     NSMutableArray *totalBubbles;
     NSMutableArray *toRemove;
     NSTimer* timer;
+    NSDate* date;
+    bool pause;
 }
 @property (retain,nonatomic) NSTimer *timer;
+@property (nonatomic, strong) UIPopoverController *timePopover;
 
 -(void)updateTimers: (NSTimer*)theTimer;
 
