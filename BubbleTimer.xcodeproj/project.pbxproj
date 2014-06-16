@@ -22,6 +22,7 @@
 		3D8ADAE119338B49004E7E37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8ADAC019338B49004E7E37 /* UIKit.framework */; };
 		3D8ADAE919338B49004E7E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAE719338B49004E7E37 /* InfoPlist.strings */; };
 		3D8ADAEB19338B49004E7E37 /* BubbleTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */; };
+		3DB3E29B194F793C002A1885 /* TimerPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E29A194F793C002A1885 /* TimerPicker.m */; };
 		3DE2EE18193C012F003DE06B /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE2EE17193C012F003DE06B /* background1.png */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		3D8ADAE619338B49004E7E37 /* BubbleTimerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BubbleTimerTests-Info.plist"; sourceTree = "<group>"; };
 		3D8ADAE819338B49004E7E37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubbleTimerTests.m; sourceTree = "<group>"; };
+		3DB3E299194F793C002A1885 /* TimerPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerPicker.h; sourceTree = "<group>"; };
+		3DB3E29A194F793C002A1885 /* TimerPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerPicker.m; sourceTree = "<group>"; };
 		3DE2EE17193C012F003DE06B /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +125,8 @@
 				3D8ADAD119338B49004E7E37 /* Main_iPad.storyboard */,
 				3D8ADAD419338B49004E7E37 /* ViewController.h */,
 				3D8ADAD519338B49004E7E37 /* ViewController.m */,
+				3DB3E299194F793C002A1885 /* TimerPicker.h */,
+				3DB3E29A194F793C002A1885 /* TimerPicker.m */,
 				3D388F22193531AA00E54AF3 /* iOSCircle.h */,
 				3D388F23193531AA00E54AF3 /* iOSCircle.m */,
 				3D8ADAC319338B49004E7E37 /* Supporting Files */,
@@ -272,6 +277,7 @@
 				3D388F24193531AA00E54AF3 /* iOSCircle.m in Sources */,
 				3D8ADACD19338B49004E7E37 /* AppDelegate.m in Sources */,
 				3D8ADAC919338B49004E7E37 /* main.m in Sources */,
+				3DB3E29B194F793C002A1885 /* TimerPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

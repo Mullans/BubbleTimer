@@ -17,7 +17,7 @@
 {
     myRed = 0;
     myGreen = 1;
-    myAlpha = .4;
+    myAlpha = .6;
     timeLeft = 0;
     inactive = false;
     _time.text = @"00:00:00";
@@ -33,7 +33,7 @@
     return self;
 }
 -(id)initTimer:(CGRect)frame Time:(int)remaining{
-    myAlpha = .4;
+    myAlpha = .6;
     myRed = 0;
     myGreen = 1;
     totalMilliseconds = remaining*100;
@@ -60,7 +60,7 @@
 
 - (void)drawCircle
 {
-    int circleStroke = 2.0;
+    int circleStroke = 1.0;
     // Get the Graphics Context
     if(sentinel==0){
         sentinel = 1;
@@ -71,24 +71,43 @@
     // Set the circle outerline-width
     CGContextSetLineWidth(context, circleStroke);
     // Set the circle outerline-colour
-    [[[UIColor alloc]initWithRed:0 green:0 blue:1 alpha:.5] set];
-//    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithWhite:255 alpha:.4])];
-    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithRed:myRed green:myGreen blue:0 alpha:myAlpha])];
+    [[[UIColor alloc]initWithRed:0 green:0 blue:1 alpha:.3] set];
+//    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithRed:myRed green:myGreen blue:0 alpha:myAlpha])];
     CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2-1, 0.0, M_PI * 2.0, YES);
-    // Draw
+    
+    
+    //Generate Radial Gradient
+    size_t num_locations = 3;
+    CGFloat locations[3] = { 0.0, 0.2, 1.0 };
+    CGFloat components[12] = { myRed, myGreen, 0, myAlpha,  // Variant Color
+                            myRed*.7, myGreen*.7, 0, myAlpha, //MidPoint
+                            1.0, 1.0, 1.0, myAlpha }; // White
+    CGColorSpaceRef rgbColorspace = CGColorSpaceCreateDeviceRGB();
+    CGGradientRef radialGradient = CGGradientCreateWithColorComponents(rgbColorspace, components, locations, num_locations);
+    CGRect currentBounds = self.bounds;
+    CGPoint midCenter = CGPointMake(CGRectGetMidX(currentBounds), CGRectGetMidY(currentBounds));
+    CGContextDrawRadialGradient(context, radialGradient, midCenter, circleRadius, midCenter, 1.0, kCGGradientDrawsAfterEndLocation);
+    CGGradientRelease(radialGradient);
+    CGColorSpaceRelease(rgbColorspace);
+    
+    
+    // Edit layer mask
     [self setNeedsDisplay];
     CGContextStrokePath(context);
-//    NSLog(@"%f, %f",self.circleCenter.x,self.circleCenter.y);
     self.layer.cornerRadius = circleRadius/2;
     self.layer.masksToBounds = YES;
     self.center = circleCenter;
+    
+    //Add text in center
     _time = [[UILabel alloc] initWithFrame:CGRectMake(circleRadius/2-27, circleRadius/2-10,120,20)];
-    _time.text = [NSString stringWithFormat:@"%02d:%02d.%02d", minutes, seconds, milliseconds];
+    if(hours==0){
+        _time.text = [NSString stringWithFormat:@"%02d:%02d.%02d", minutes, seconds, milliseconds];
+    }else{
+        _time.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+    }
+
     [_time setTextColor:[UIColor blueColor]];
-//    [_time setBackgroundColor:[UIColor clearColor]];
     [_time setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-    //        [self.time setTextAlignment:NSTextAlignmentCenter];
-    //_time.center = self.center;
     [self addSubview:_time];
     [self bringSubviewToFront:_time];
 }
@@ -113,8 +132,8 @@
         }
         milliseconds = totalMilliseconds%100;
         seconds = (totalMilliseconds/100)%60;
-        minutes = (totalMilliseconds/6000);
-//        _time.text = [NSString stringWithFormat:@"%02d:%02d.%02d", hours, minutes, seconds];
+        minutes = (totalMilliseconds/6000)%60;
+        hours = (totalMilliseconds/360000);
         [self setNeedsDisplay];
     }
 }
@@ -122,7 +141,10 @@
 -(void)tapBubble{
     NSLog(@"BubbleTapped");
     inactive = !inactive;
-    self.backgroundColor = ([UIColor colorWithRed:1 green:0 blue:0 alpha:myAlpha]);
+//    self.backgroundColor = ([UIColor colorWithRed:1 green:0 blue:0 alpha:myAlpha]);
+    myRed = (float)(((int)myRed+1)%2);
+    myGreen = (float)(((int)myGreen+1)%2);
+    [self setNeedsDisplay];
 }
 
 @end

@@ -16,6 +16,7 @@
     int seconds;
     int milliseconds;
     int minutes;
+    int hours;
     unsigned int totalMilliseconds;
     CGContextRef context;
     int sentinel;

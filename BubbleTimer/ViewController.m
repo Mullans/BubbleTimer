@@ -94,11 +94,9 @@
             }
         }
         
-        
         //use UIPopover to get desired time
         [self makePopover];
         NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
-//        NSLog(@"%li",(long)thisBubbleSize);
         // Create a new iOSCircle Object
         CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
         iOSCircle *newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:30];
@@ -120,31 +118,18 @@
         }
     }
 }
--(void)updateTimers:(NSTimer *)theTimer{
-    if([toRemove count]!=0){
-        for(iOSCircle* circle in toRemove){
-            [totalBubbles removeObject:circle];
-        }
-    }
-    for(iOSCircle* circle in totalBubbles){
-        [circle updateCounter];
-    }
-}
 -(void)makePopover{
         UIViewController* popoverContent = [[UIViewController alloc] init];
-        UIView *popoverView = [[UIView alloc] init];
-        popoverView.backgroundColor = [UIColor blackColor];
+        UIView *popoverView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,236)];
+        popoverView.backgroundColor = [UIColor whiteColor];
         
-        UIDatePicker *datePickerTemp = [[UIDatePicker alloc]init];
-        datePickerTemp.frame=CGRectMake(0,44,320, 216);
-        datePickerTemp.datePickerMode = UIDatePickerModeDate;
-        datePickerTemp.maximumDate = [NSDate date];
-        self.datePicker = datePickerTemp;
-        [popoverView addSubview: self.datePicker];
+        TimerPicker *timePickerTemp = [[TimerPicker alloc]initWithFrame:CGRectMake(0,30,320,216)];
+        self.timerPicker = timePickerTemp;
+        [popoverView addSubview: self.timerPicker];
         
         UIToolbar *toolbar = [[UIToolbar alloc] init];
         toolbar.frame=CGRectMake(0,0 ,320, 40);
-        toolbar.barStyle = UIBarStyleBlackOpaque;
+        toolbar.barStyle = UIBarStyleBlack;
         NSMutableArray *toolbarItems = [NSMutableArray array];
         UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelButtonClicked)];
         UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(datePickerSaveButtonClicked)];
@@ -157,11 +142,22 @@
         
         popoverContent.view = popoverView;
         UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
-        popoverController.delegate=self;
-        self.datePopoverController = popoverController;
+//        popoverController.delegate=self;
+        self.timerPopoverController = popoverController;
         
-        [self.datePopoverController setPopoverContentSize:CGSizeMake(320, 264) animated:NO];
-        [self.datePopoverController presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [self.timerPopoverController setPopoverContentSize:CGSizeMake(320, 236) animated:NO];
+        [self.timerPopoverController presentPopoverFromRect:CGRectMake(tapPoint.x,tapPoint.y,1,1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(void)updateTimers:(NSTimer *)theTimer{
+    if([toRemove count]!=0){
+        for(iOSCircle* circle in toRemove){
+            [totalBubbles removeObject:circle];
+        }
+    }
+    for(iOSCircle* circle in totalBubbles){
+        [circle updateCounter];
+    }
 }
 -(void)addBackground{
     //sets background image
