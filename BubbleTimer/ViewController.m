@@ -96,19 +96,6 @@
         
         //use UIPopover to get desired time
         [self makePopover];
-        NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
-        // Create a new iOSCircle Object
-        CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
-        iOSCircle *newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:30];
-        newCircle.circleCenter = tapPoint;
-        // Set a random Circle Radius in the future
-        newCircle.circleRadius = thisBubbleSize;
-        newCircle.opaque = false;
-        // Add the Circle Object to the Array
-        [totalBubbles addObject:newCircle];
-        // update the view
-        newCircle.userInteractionEnabled = YES;
-        [self.view addSubview:newCircle];
     }else if(recognizer.state ==UIGestureRecognizerStateBegan){
         for (iOSCircle *circle in totalBubbles){
             if(CGRectContainsPoint(circle.frame, tapPoint)){
@@ -131,8 +118,8 @@
         toolbar.frame=CGRectMake(0,0 ,320, 40);
         toolbar.barStyle = UIBarStyleBlack;
         NSMutableArray *toolbarItems = [NSMutableArray array];
-        UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelButtonClicked)];
-        UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(datePickerSaveButtonClicked)];
+        UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
+        UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButton)];
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         [toolbarItems addObject:cancelButton1];
         [toolbarItems addObject:space];
@@ -149,6 +136,32 @@
         [self.timerPopoverController presentPopoverFromRect:CGRectMake(tapPoint.x,tapPoint.y,1,1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+-(void)cancelButton{
+    [self.timerPopoverController dismissPopoverAnimated:true];
+}
+-(void)saveButton{
+    
+    NSInteger hours = [self.timerPicker selectedRowInComponent:0];
+    NSInteger minutes = [self.timerPicker selectedRowInComponent:1];
+    NSInteger seconds = [self.timerPicker selectedRowInComponent:2];
+    int totalTime = seconds+minutes*60+hours*3600;
+    NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
+    // Create a new iOSCircle Object
+    CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
+    iOSCircle *newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:totalTime];
+    newCircle.circleCenter = tapPoint;
+    // Set a random Circle Radius in the future
+    newCircle.circleRadius = thisBubbleSize;
+    newCircle.opaque = false;
+    // Add the Circle Object to the Array
+    [totalBubbles addObject:newCircle];
+    // update the view
+    newCircle.userInteractionEnabled = YES;
+    [self.view addSubview:newCircle];
+    
+    [self.timerPopoverController dismissPopoverAnimated:true];
+}
+
 -(void)updateTimers:(NSTimer *)theTimer{
     if([toRemove count]!=0){
         for(iOSCircle* circle in toRemove){
@@ -160,12 +173,6 @@
     }
 }
 -(void)addBackground{
-    //sets background image
-    //    NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
-    //    NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
-    //    UIImage *img = [UIImage imageWithData:imgData];
-    //    imageView = [[UIImageView alloc] initWithImage:img];
-    
     
     UIImage *backgroundImage = [UIImage imageNamed:@"universe.png"];
     imageView = [[UIImageView alloc] initWithImage:backgroundImage];
