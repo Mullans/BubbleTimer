@@ -24,9 +24,10 @@
     NSDate* date;
     bool pause;
 }
+@property (nonatomic, strong) UIDatePicker *datePicker;
 @property (retain,nonatomic) NSTimer *timer;
-@property (nonatomic, strong) UIPopoverController *timePopover;
+@property (nonatomic, strong) UIPopoverController *datePopoverController;
 
 -(void)updateTimers: (NSTimer*)theTimer;
-
+-(void)addBackground;
 @end

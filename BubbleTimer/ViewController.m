@@ -1,4 +1,5 @@
 //
+//Pinch to resize bubble?
 //  ViewController.m
 //  BubbleTimer
 //
@@ -16,23 +17,14 @@
 @implementation ViewController
 @synthesize timer;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
-    //sets background image
-//    NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
-//    NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
-//    UIImage *img = [UIImage imageWithData:imgData];
-//    imageView = [[UIImageView alloc] initWithImage:img];
-    
-    UIImage *testImage = [UIImage imageNamed:@"sky.png"];
-    imageView = [[UIImageView alloc] initWithImage:testImage];
+
+    [self addBackground];
 
     totalBubbles = [[NSMutableArray alloc] initWithCapacity:1];
     toRemove = [[NSMutableArray alloc] initWithCapacity:1];
-    [self.view addSubview:imageView ];
-    [self.view sendSubviewToBack:imageView ];
     
     //set a gesture recognizer for single taps in the main view
     oneFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(oneTapDetected:)];
@@ -52,13 +44,10 @@
     [self.view addGestureRecognizer:longTap];
 
 }
-
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 -(void)oneTapDetected:(UITapGestureRecognizer *)recognizer{
 //    NSLog(@"one tap detected");
     tapPoint = [oneFingerTap locationInView:self.view];
@@ -96,7 +85,7 @@
     }
 }
 -(void)longTapDetected:(UILongPressGestureRecognizer*)recognizer{
-    NSLog(@"longTouch");
+//    NSLog(@"longTouch");
     tapPoint = [longTap locationInView:self.view];
     if(recognizer.state == UIGestureRecognizerStateEnded){
         for (iOSCircle *circle in totalBubbles){
@@ -104,13 +93,14 @@
                 return;
             }
         }
-        NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
-        NSLog(@"%li",(long)thisBubbleSize);
-        // Create a new iOSCircle Object
-        CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
+        
         
         //use UIPopover to get desired time
-        
+        [self makePopover];
+        NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
+//        NSLog(@"%li",(long)thisBubbleSize);
+        // Create a new iOSCircle Object
+        CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
         iOSCircle *newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:30];
         newCircle.circleCenter = tapPoint;
         // Set a random Circle Radius in the future
@@ -130,7 +120,6 @@
         }
     }
 }
-
 -(void)updateTimers:(NSTimer *)theTimer{
     if([toRemove count]!=0){
         for(iOSCircle* circle in toRemove){
@@ -141,6 +130,56 @@
         [circle updateCounter];
     }
 }
-
+-(void)makePopover{
+        UIViewController* popoverContent = [[UIViewController alloc] init];
+        UIView *popoverView = [[UIView alloc] init];
+        popoverView.backgroundColor = [UIColor blackColor];
+        
+        UIDatePicker *datePickerTemp = [[UIDatePicker alloc]init];
+        datePickerTemp.frame=CGRectMake(0,44,320, 216);
+        datePickerTemp.datePickerMode = UIDatePickerModeDate;
+        datePickerTemp.maximumDate = [NSDate date];
+        self.datePicker = datePickerTemp;
+        [popoverView addSubview: self.datePicker];
+        
+        UIToolbar *toolbar = [[UIToolbar alloc] init];
+        toolbar.frame=CGRectMake(0,0 ,320, 40);
+        toolbar.barStyle = UIBarStyleBlackOpaque;
+        NSMutableArray *toolbarItems = [NSMutableArray array];
+        UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(datePickerCancelButtonClicked)];
+        UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(datePickerSaveButtonClicked)];
+        UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolbarItems addObject:cancelButton1];
+        [toolbarItems addObject:space];
+        [toolbarItems addObject:doneButton1];
+        toolbar.items = toolbarItems;
+        [popoverView addSubview:toolbar];
+        
+        popoverContent.view = popoverView;
+        UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+        popoverController.delegate=self;
+        self.datePopoverController = popoverController;
+        
+        [self.datePopoverController setPopoverContentSize:CGSizeMake(320, 264) animated:NO];
+        [self.datePopoverController presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+-(void)addBackground{
+    //sets background image
+    //    NSURL *imgUrl=[[NSURL alloc] initWithString:@"http://cdn.osxdaily.com/wp-content/uploads/2010/06/ipad-background-2.jpg"];
+    //    NSData *imgData = [NSData dataWithContentsOfURL:imgUrl];
+    //    UIImage *img = [UIImage imageWithData:imgData];
+    //    imageView = [[UIImageView alloc] initWithImage:img];
+    
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"universe.png"];
+    imageView = [[UIImageView alloc] initWithImage:backgroundImage];
+    float imgFactor = imageView.frame.size.height / imageView.frame.size.width;
+    float width = [[UIScreen mainScreen] bounds].size.width;
+    float height = [[UIScreen mainScreen] bounds].size.height;//imageView.frame.size.width * imgFactor;
+    NSLog(@"width:%f  height:%f",width,height);
+    [imageView setFrame:CGRectMake(0, 0,height,width)];
+    [self.view addSubview:imageView ];
+    [self.view sendSubviewToBack:imageView ];
+}
 
 @end

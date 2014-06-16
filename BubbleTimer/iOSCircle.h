@@ -11,7 +11,7 @@
 
 
 @interface iOSCircle: UIView{
-    UILabel* time;
+//    UILabel* time;
     //possible have a transition to hours?
     int seconds;
     int milliseconds;
