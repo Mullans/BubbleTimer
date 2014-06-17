@@ -19,8 +19,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
-
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimers:) userInfo:nil repeats:YES];
+    imageName = @"universe.png";
     [self addBackground];
 
     totalBubbles = [[NSMutableArray alloc] initWithCapacity:1];
@@ -42,7 +42,58 @@
     longTap.minimumPressDuration = .5;
     longTap.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:longTap];
-
+    
+    clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *gearImage = [UIImage imageNamed:@"bigGearButton.png"];
+    [clearButton setImage:gearImage forState:UIControlStateNormal];
+    clearButton.frame = CGRectMake(self.view.frame.size.width+140, self.view.frame.size.height-330, 50, 50);
+    NSLog(@"%f %f",self.view.frame.size.width,self.view.frame.size.height);
+    clearButton.backgroundColor = [UIColor clearColor];
+    [clearButton addTarget:self action:@selector(clearClick)
+    forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clearButton];
+}
+-(void)clearClick{
+    for(iOSCircle *circle in totalBubbles){
+        [toRemove addObject:circle];
+    }
+    [self makeOptionsPopover];
+}
+-(void)makeOptionsPopover{
+    UIViewController* popoverContent = [[UIViewController alloc] init];
+    UIView *popoverView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,236)];
+    popoverView.backgroundColor = [UIColor whiteColor];
+    
+    TimerPicker *timePickerTemp = [[TimerPicker alloc]initWithFrame:CGRectMake(0,30,320,216)];
+    self.timerPicker = timePickerTemp;
+    [popoverView addSubview: self.timerPicker];
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.frame=CGRectMake(0,0 ,320, 40);
+    toolbar.barStyle = UIBarStyleBlack;
+    NSMutableArray *toolbarItems = [NSMutableArray array];
+    UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(optionCancelButton)];
+    UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(optionSaveButton)];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [toolbarItems addObject:cancelButton1];
+    [toolbarItems addObject:space];
+    [toolbarItems addObject:doneButton1];
+    toolbar.items = toolbarItems;
+    [popoverView addSubview:toolbar];
+    
+    popoverContent.view = popoverView;
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+    //        popoverController.delegate=self;
+    self.optionsPopoverController = popoverController;
+    
+    [self.optionsPopoverController setPopoverContentSize:CGSizeMake(320, self.view.frame.size.height*(4.0/5.0)) animated:NO];
+    [self.optionsPopoverController presentPopoverFromRect:clearButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+-(void)optionCancelButton{
+    [self.optionsPopoverController dismissPopoverAnimated:true];
+}
+-(void)optionSaveButton{
+    [self.optionsPopoverController dismissPopoverAnimated:true];
 }
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
@@ -95,7 +146,7 @@
         }
         
         //use UIPopover to get desired time
-        [self makePopover];
+        [self makeTimerPopover];
     }else if(recognizer.state ==UIGestureRecognizerStateBegan){
         for (iOSCircle *circle in totalBubbles){
             if(CGRectContainsPoint(circle.frame, tapPoint)){
@@ -105,7 +156,7 @@
         }
     }
 }
--(void)makePopover{
+-(void)makeTimerPopover{
         UIViewController* popoverContent = [[UIViewController alloc] init];
         UIView *popoverView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,236)];
         popoverView.backgroundColor = [UIColor whiteColor];
@@ -118,8 +169,8 @@
         toolbar.frame=CGRectMake(0,0 ,320, 40);
         toolbar.barStyle = UIBarStyleBlack;
         NSMutableArray *toolbarItems = [NSMutableArray array];
-        UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButton)];
-        UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButton)];
+        UIBarButtonItem *cancelButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(timerCancelButton)];
+        UIBarButtonItem *doneButton1 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(timerSaveButton)];
         UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         [toolbarItems addObject:cancelButton1];
         [toolbarItems addObject:space];
@@ -136,19 +187,25 @@
         [self.timerPopoverController presentPopoverFromRect:CGRectMake(tapPoint.x,tapPoint.y,1,1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
--(void)cancelButton{
+-(void)timerCancelButton{
     [self.timerPopoverController dismissPopoverAnimated:true];
 }
--(void)saveButton{
+-(void)timerSaveButton{
     
     NSInteger hours = [self.timerPicker selectedRowInComponent:0];
     NSInteger minutes = [self.timerPicker selectedRowInComponent:1];
     NSInteger seconds = [self.timerPicker selectedRowInComponent:2];
     int totalTime = seconds+minutes*60+hours*3600;
+    
     NSInteger thisBubbleSize = random()%20 + BUBBLESIZE-10;
     // Create a new iOSCircle Object
     CGRect circleFrame = CGRectMake(tapPoint.x-thisBubbleSize/2,tapPoint.y-thisBubbleSize/2,thisBubbleSize,thisBubbleSize);
-    iOSCircle *newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:totalTime];
+    iOSCircle *newCircle;
+    if (totalTime==0){
+        newCircle = [[iOSCircle alloc]initStopwatch:circleFrame];
+    }else{
+        newCircle = [[iOSCircle alloc]initTimer:circleFrame Time:totalTime];
+    }
     newCircle.circleCenter = tapPoint;
     // Set a random Circle Radius in the future
     newCircle.circleRadius = thisBubbleSize;
@@ -166,6 +223,7 @@
     if([toRemove count]!=0){
         for(iOSCircle* circle in toRemove){
             [totalBubbles removeObject:circle];
+            [circle removeFromSuperview];
         }
     }
     for(iOSCircle* circle in totalBubbles){
@@ -173,10 +231,12 @@
     }
 }
 -(void)addBackground{
-    
-    UIImage *backgroundImage = [UIImage imageNamed:@"universe.png"];
+    if([imageView isDescendantOfView:self.view]){
+        [imageView removeFromSuperview];
+    }
+    UIImage *backgroundImage = [UIImage imageNamed:imageName];
     imageView = [[UIImageView alloc] initWithImage:backgroundImage];
-    float imgFactor = imageView.frame.size.height / imageView.frame.size.width;
+//    float imgFactor = imageView.frame.size.height / imageView.frame.size.width;
     float width = [[UIScreen mainScreen] bounds].size.width;
     float height = [[UIScreen mainScreen] bounds].size.height;//imageView.frame.size.width * imgFactor;
     NSLog(@"width:%f  height:%f",width,height);

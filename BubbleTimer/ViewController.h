@@ -11,7 +11,7 @@
 #import "TimerPicker.h"
 #define MINRADIUS 10
 #define MAXRADIUS 30
-#define BUBBLESIZE 80
+#define BUBBLESIZE 180
 
 @interface ViewController : UIViewController{
     UIImageView *imageView;
@@ -24,10 +24,14 @@
     NSTimer* timer;
     NSDate* date;
     bool pause;
+    UIButton* clearButton;
+    NSString *imageName;
 }
+
 @property (nonatomic, strong) TimerPicker *timerPicker;
 @property (retain,nonatomic) NSTimer *timer;
 @property (nonatomic, strong) UIPopoverController *timerPopoverController;
+@property (nonatomic, strong) UIPopoverController *optionsPopoverController;
 
 -(void)updateTimers: (NSTimer*)theTimer;
 -(void)addBackground;

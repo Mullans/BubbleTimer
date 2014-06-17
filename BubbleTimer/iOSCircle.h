@@ -24,6 +24,7 @@
     int timeLeft;
     unsigned int startingTime;
     float myRed,myGreen,myAlpha;
+    int draw;
 }
 @property (nonatomic) CGContextRef context;
 @property (nonatomic) CGPoint circleCenter;

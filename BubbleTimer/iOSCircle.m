@@ -60,7 +60,7 @@
 
 - (void)drawCircle
 {
-    int circleStroke = 1.0;
+//    int circleStroke = 1.0;
     // Get the Graphics Context
     if(sentinel==0){
         sentinel = 1;
@@ -69,16 +69,15 @@
     }
     context = UIGraphicsGetCurrentContext();
     // Set the circle outerline-width
-    CGContextSetLineWidth(context, circleStroke);
+//    CGContextSetLineWidth(context, circleStroke);
     // Set the circle outerline-colour
-    [[[UIColor alloc]initWithRed:0 green:0 blue:1 alpha:.3] set];
-//    [self setBackgroundColor:self.backgroundColor = ([UIColor colorWithRed:myRed green:myGreen blue:0 alpha:myAlpha])];
-    CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2-1, 0.0, M_PI * 2.0, YES);
+    // [[[UIColor alloc]initWithRed:0 green:0 blue:1 alpha:.3] set];
+    // CGContextAddArc(context, circleRadius/2, circleRadius/2, circleRadius/2-1, 0.0, M_PI * 2.0, YES);
     
     
     //Generate Radial Gradient
     size_t num_locations = 3;
-    CGFloat locations[3] = { 0.0, 0.2, 1.0 };
+    CGFloat locations[3] = { 0.0, 0.1, 1.0 };
     CGFloat components[12] = { myRed, myGreen, 0, myAlpha,  // Variant Color
                             myRed*.7, myGreen*.7, 0, myAlpha, //MidPoint
                             1.0, 1.0, 1.0, myAlpha }; // White
@@ -86,7 +85,7 @@
     CGGradientRef radialGradient = CGGradientCreateWithColorComponents(rgbColorspace, components, locations, num_locations);
     CGRect currentBounds = self.bounds;
     CGPoint midCenter = CGPointMake(CGRectGetMidX(currentBounds), CGRectGetMidY(currentBounds));
-    CGContextDrawRadialGradient(context, radialGradient, midCenter, circleRadius, midCenter, 1.0, kCGGradientDrawsAfterEndLocation);
+    CGContextDrawRadialGradient(context, radialGradient, midCenter, circleRadius/2, midCenter, 1.0, kCGGradientDrawsAfterEndLocation);
     CGGradientRelease(radialGradient);
     CGColorSpaceRelease(rgbColorspace);
     
@@ -99,15 +98,15 @@
     self.center = circleCenter;
     
     //Add text in center
-    _time = [[UILabel alloc] initWithFrame:CGRectMake(circleRadius/2-27, circleRadius/2-10,120,20)];
+    _time = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,circleRadius,circleRadius)];
     if(hours==0){
-        _time.text = [NSString stringWithFormat:@"%02d:%02d.%02d", minutes, seconds, milliseconds];
+        _time.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
     }else{
         _time.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
     }
-
+    [_time setTextAlignment:NSTextAlignmentCenter];
     [_time setTextColor:[UIColor blueColor]];
-    [_time setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+    [_time setFont:[UIFont fontWithName: @"TimesNewRomanPS-BoldMT" size: 34.0f]];
     [self addSubview:_time];
     [self bringSubviewToFront:_time];
 }
@@ -115,12 +114,12 @@
 - (void)updateCounter{
     if(!inactive){
         if(timeLeft==1){
-            totalMilliseconds--;
+            totalMilliseconds-=100;
             if(totalMilliseconds==0){
                 inactive= !inactive;
                 timeLeft = 0;
-                myGreen = 1;
-                myRed = 0;
+                myGreen = 0;
+                myRed = 1;
                 startingTime = 0;
             }else{
                 float percentDone = ((float)startingTime-(float)totalMilliseconds)/(float)startingTime;
@@ -128,7 +127,7 @@
                 myRed = percentDone;
             }
         }else{
-            totalMilliseconds++;
+            totalMilliseconds+=100;
         }
         milliseconds = totalMilliseconds%100;
         seconds = (totalMilliseconds/100)%60;
@@ -142,8 +141,14 @@
     NSLog(@"BubbleTapped");
     inactive = !inactive;
 //    self.backgroundColor = ([UIColor colorWithRed:1 green:0 blue:0 alpha:myAlpha]);
-    myRed = (float)(((int)myRed+1)%2);
-    myGreen = (float)(((int)myGreen+1)%2);
+    if(inactive){
+        myRed = 1;
+        myGreen = 0;
+    }else{
+        myRed = 0;
+        myGreen = 1;
+    }
+    NSLog(@"%f  %f",myRed, myGreen);
     [self setNeedsDisplay];
 }
 

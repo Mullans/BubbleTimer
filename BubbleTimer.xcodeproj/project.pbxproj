@@ -23,7 +23,6 @@
 		3D8ADAE919338B49004E7E37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D8ADAE719338B49004E7E37 /* InfoPlist.strings */; };
 		3D8ADAEB19338B49004E7E37 /* BubbleTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */; };
 		3DB3E29B194F793C002A1885 /* TimerPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3E29A194F793C002A1885 /* TimerPicker.m */; };
-		3DE2EE18193C012F003DE06B /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE2EE17193C012F003DE06B /* background1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		3D8ADAEA19338B49004E7E37 /* BubbleTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BubbleTimerTests.m; sourceTree = "<group>"; };
 		3DB3E299194F793C002A1885 /* TimerPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerPicker.h; sourceTree = "<group>"; };
 		3DB3E29A194F793C002A1885 /* TimerPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerPicker.m; sourceTree = "<group>"; };
-		3DE2EE17193C012F003DE06B /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				3D8ADAD719338B49004E7E37 /* Images.xcassets */,
-				3DE2EE17193C012F003DE06B /* background1.png */,
 				3D8ADAC419338B49004E7E37 /* BubbleTimer-Info.plist */,
 				3D8ADAC519338B49004E7E37 /* InfoPlist.strings */,
 				3D8ADAC819338B49004E7E37 /* main.m */,
@@ -213,6 +210,7 @@
 				ORGANIZATIONNAME = SilentLupin;
 				TargetAttributes = {
 					3D8ADAB819338B49004E7E37 = {
+						DevelopmentTeam = GFC49YT5RF;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -254,7 +252,6 @@
 				3D8ADAD319338B49004E7E37 /* Main_iPad.storyboard in Resources */,
 				3D8ADAD819338B49004E7E37 /* Images.xcassets in Resources */,
 				3D8ADAC719338B49004E7E37 /* InfoPlist.strings in Resources */,
-				3DE2EE18193C012F003DE06B /* background1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
 				INFOPLIST_FILE = "BubbleTimer/BubbleTimer-Info.plist";
@@ -418,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BubbleTimer/BubbleTimer-Prefix.pch";
 				INFOPLIST_FILE = "BubbleTimer/BubbleTimer-Info.plist";
